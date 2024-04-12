@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container,.main{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 0px;
+            align-items: center;
+            padding: 30px;
+            height: 80px;
+            font-size: 30px;
+            font-weight: bold;
+            border-radius: 20px;
+            color: white;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            border: 0 solid black;
+            background:linear-gradient(to right,orange,orangered);
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+        }
+        .main{
+            border: 0;
+            background: transparent;
+        }
+        
+        .hour,.second,.minute{
+            border: 0px solid black;
+            padding: 30px;
+            margin: 0;
+        }
+        .hour::after,.minute::after{
+            content: "   :";
+        }
+        .container1{    
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 0px;
+            align-items: center;
+            padding: 30px;
+            font-size: 30px;
+            font-weight: bold;
+            border-radius: 20px;
+            color: white;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            border: 0 solid black;
+            background:linear-gradient(to right,rgb(134, 131, 131),orange);  
+        }
+        .date::after{
+            content: "|";
+            margin: 40px;
+        }
+        .month::after{
+            content: "|";
+            margin: 40px;
+        }
+        .day::after{
+            content: "|";
+            margin: 40px;
+        } 
+    </style>
+</head>
+<body>
+        <div class="container">
+           <div class="main">
+            <div class="hour" id="hour"></div>
+            <div class="minute" id="minute"></div>
+            <div class="second" id="second"></div>
+           </div>
+           <div class="container1">
+            <div class="date"id="date"></div>
+            <div class="month" id="month"></div>
+            <div class="day" id="day"></div>
+            <div class="year" id="year"></div>
+        </div>
+        </div>
+    <script>
+        var second =0;
+        var minute = 0;
+        var hour = 0;
+        var d= new Date();
+        console.log(d);
+
+        setInterval(function() {
+            d = new Date();
+            second =  d.getSeconds();
+            minute = d.getMinutes();
+            hour = d.getHours();
+            var month = d.getMonth();
+            var year = d.getFullYear();
+            var dayOfWeek = d.getDay();
+            var dayOfMonth = d.getDate();
+            var month1 = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+            var month2 = month1[month];
+            var daysOfWeekNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            var dayName = daysOfWeekNames[dayOfWeek];
+            document.getElementById("hour").innerHTML = hour;
+            document.getElementById("minute").innerHTML = minute;
+            document.getElementById("second").innerHTML = second;
+            document.getElementById("second").innerHTML = second;
+            document.getElementById("date").innerHTML = dayOfMonth;
+            document.getElementById("day").innerHTML = dayName;
+            document.getElementById("month").innerHTML = month2;
+            document.getElementById("year").innerHTML = year;
+
+
+        }, 1000);
+    </script>
+</body>
+</html>
